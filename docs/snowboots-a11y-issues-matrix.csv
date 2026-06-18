@@ -1,0 +1,6 @@
+ID,Category,Specific_Issue,WCAG_Reference,Source_URLs
+1,Color Contrast,Default primary buttons have insufficient contrast against background,1.4.3,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+2,Color Contrast,Secondary buttons fail 4.5:1 ratio on hover,1.4.3,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+3,Color Contrast,Muted text (.text-muted) below 4.5:1,1.4.3,https://www.servicenow.com/accessibility-statement.html
+4,Color Contrast,Link text in navigation not meeting 4.5:1,1.4.3,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+5,Color Contrast,Alert warning text on default background,1.4.3,https://www.servicenow.com/community/user-experience-sig/knowledge23-accessibility-leading-practices-and-tools/ba-p/2548551
