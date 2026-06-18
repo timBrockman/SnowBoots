@@ -1,0 +1,91 @@
+/* ================================================
+   SnowBoots - a11y Overrides
+   Dedicated accessibility layer for ServiceNow Bootstrap 3.3.6
+   Version: 0.1.0 (MVP Draft - June 2026)
+   Purpose: WCAG AAA-targeted enhancements (contrast, focus, motion)
+   ================================================ */
+
+/* ================================================
+   1. ServiceNow Implementation Notes
+   ================================================ */
+   /* How to use:
+      1. Create Style Sheet: SnowBoots a11y Overrides
+      2. Paste entire content
+      3. Add to Theme → CSS Includes AFTER core-overrides
+      4. Optional: Load conditionally via script if needed
+   */
+
+/* ================================================
+   2. Specificity & Override Strategy
+   ================================================ */
+   /* Same as core: html body + targeted selectors. Focus on a11y-critical rules */
+
+/* ================================================
+   3. AAA Prioritization & Limitations
+   ================================================ */
+   /* Targets AAA where CSS can (contrast 7:1, enhanced focus). Notes: Some AAA (e.g. 3.3.6) need JS/widgets */
+
+/* ================================================
+   4. High Contrast & Color Overrides
+   ================================================ */
+html body {
+  --sb-text-contrast: #111;
+  --sb-bg-contrast: #fff;
+}
+
+html body .btn,
+html body .alert {
+  color: #000 !important; /* AAA boost for critical UI */
+}
+
+/* ================================================
+   5. Enhanced Focus Indicators
+   ================================================ */
+html body :focus-visible {
+  outline: 4px solid #0066cc;
+  outline-offset: 3px;
+}
+
+/* ================================================
+   6. Reduced Motion & Motion Safety
+   ================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html body * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ================================================
+   7. Typography & Readable Text
+   ================================================ */
+html body {
+  line-height: 1.6;
+}
+
+html body .small {
+  font-size: 0.9rem;
+}
+
+/* ================================================
+   8. Component-Specific a11y (Tables, Forms, Navbar)
+   ================================================ */
+html body .table th {
+  background: #f0f0f0;
+}
+
+html body .form-control {
+  min-height: 44px; /* better touch targets */
+}
+
+/* ================================================
+   9. ARIA Visual Helpers (non-destructive)
+   ================================================ */
+html body [role="alert"] {
+  border-left: 5px solid #d9534f;
+}
+
+/* ================================================
+   10. Footer / Ready for Production
+   ================================================ */
+/* SnowBoots a11y v0.1.0 - Test with axe-core. Next: pair with core file */
