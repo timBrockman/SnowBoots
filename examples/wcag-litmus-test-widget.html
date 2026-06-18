@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SnowBoots • WCAG Litmus Test Widget v0.1</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { padding: 20px; background: #f9f9f9; }
+    .test-section { margin: 30px 0; padding: 20px; border: 2px solid #ddd; background: white; }
+    .override-label { background: #fff3cd; padding: 8px; border-left: 5px solid #f0ad4e; font-weight: bold; }
+    .pass { color: green; } .fail { color: red; }
+  </style>
+</head>
+<body>
+
+<h1>🚦 SnowBoots / ServiceNow WCAG Litmus Test • v0.1</h1>
+<p><strong>Quick litmus test</strong> — catches 80% of common portal/theme issues before full axe-core run.<br>
+Copy this widget anywhere. Works in any ServiceNow portal OR standalone.</p>
+
+<div class="test-section">
+  <h3>1. Color Contrast & Theme Variables</h3>
+  <div class="override-label">Override target: <code>:root { --sb-primary: ... }</code> or <code>html body .btn-primary</code></div>
+  <button class="btn btn-primary">Primary Button (should be ≥7:1 on bg)</button>
+  <button class="btn btn-success">Success (check text)</button>
+  <span class="label label-danger">Danger label</span>
+  <p class="text-muted">Muted text — should NOT be too light</p>
+</div>
+
+<div class="test-section">
+  <h3>2. Buttons & Interactive Elements</h3>
+  <div class="override-label">Override: <code>.btn:focus-visible</code> + hover states</div>
+  <button class="btn btn-default">Default • Tab to me</button>
+  <button class="btn btn-lg btn-primary">Large Primary</button>
+</div>
+
+<div class="test-section">
+  <h3>3. Forms & Touch Targets</h3>
+  <div class="override-label">Override: <code>.form-control</code> + <code>min-height: 44px</code></div>
+  <label>Username <span class="text-danger">*</span></label>
+  <input type="text" class="form-control" placeholder="Should have 44px+ height">
+  <select class="form-control"><option>Error state simulation</option></select>
+</div>
+
+<div class="test-section">
+  <h3>4. Typography & Links</h3>
+  <div class="override-label">Override: <code>a, h1-h6, .small</code> contrast</div>
+  <h1>Heading 1</h1>
+  <a href="#">This link must be ≥4.5:1 (AAA target 7:1)</a>
+  <small>Small text — often fails contrast</small>
+</div>
+
+<div class="test-section">
+  <h3>5. Focus Indicators & Keyboard Test</h3>
+  <div class="override-label">Override: <code>:focus-visible { outline: 4px solid #0066cc; }</code></div>
+  <p>Tab through this section → focus ring must be obvious and not obscured.</p>
+  <button class="btn btn-info">Tab me → Shift+Tab back</button>
+  <input type="text" class="form-control" placeholder="Focus me">
+</div>
+
+<div class="test-section">
+  <h3>6. Tables & Data</h3>
+  <div class="override-label">Override: <code>.table th, .table-striped</code></div>
+  <table class="table table-striped">
+    <thead><tr><th>Header (needs strong contrast)</th></tr></thead>
+    <tbody><tr><td>Row data • zebra check</td></tr></tbody>
+  </table>
+</div>
+
+<div class="test-section">
+  <h3>7. Alerts / Modals / Navbar Simulation</h3>
+  <div class="override-label">Override: <code>.alert, .navbar, .modal-content</code></div>
+  <div class="alert alert-warning">Warning alert — text must pop</div>
+  <nav class="navbar navbar-default">Navbar simulation • logo area contrast</nav>
+</div>
+
+<div class="test-section">
+  <h3>8. Reduced Motion + Final Checks</h3>
+  <div class="override-label">Override: <code>@media (prefers-reduced-motion)</code></div>
+  <button onclick="alert('Test reduced motion in DevTools → Rendering')">Click me then emulate reduced motion</button>
+  <p>✅ Quick Pass/Fail: All text ≥7:1? Focus visible? Buttons ≥44px? No motion issues?</p>
+</div>
+
+<hr>
+<p><strong>Next steps after this litmus test:</strong> Run axe DevTools + WAVE + keyboard-only navigation.<br>
+Copy overrides into <code>snowboots-core-overrides.scss</code> or <code>snowboots-a11y.scss</code>.</p>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
