@@ -1,0 +1,156 @@
+/* ================================================
+   SnowBoots - Core Overrides
+   Modern post-processing layer for ServiceNow Bootstrap 3.3.6
+   Version: 0.1.0 (MVP Draft - June 2026)
+   Purpose: Drop-in improvements + a11y foundation
+   ================================================ */
+
+/* ================================================
+   1. ServiceNow Implementation Notes
+   ================================================ */
+/* How to use in ServiceNow:
+   1. Create new Style Sheet record (name: SnowBoots Core Overrides)
+   2. Paste entire content into the SCSS field
+   3. Add to your Portal's Theme → CSS Includes (related list)
+   4. Ensure it appears AFTER any other includes
+   5. For best results also add key colors to Theme → CSS Variables with !default
+*/
+
+/* ================================================
+   2. Specificity & Override Strategy
+   ================================================ */
+/* Policy: html body + 1 extra class where needed (max 3 levels)
+   • No blanket !important except focus/a11y utilities
+   • Goal: overrides Bootstrap without breaking widget-level styles
+*/
+
+/* ================================================
+   3. CSS Custom Properties Foundation
+   ================================================ */
+:root {
+  --sb-primary: #337ab7;
+  --sb-success: #5cb85c;
+  --sb-info: #5bc0de;
+  --sb-warning: #f0ad4e;
+  --sb-danger: #d9534f;
+  --sb-text: #333;
+  --sb-link: #337ab7;
+  --sb-focus: #337ab7;
+  --sb-gutter: 15px;
+  --sb-radius: 4px;
+  --sb-transition: all 0.2s ease;
+}
+
+/* ================================================
+   4. Base & Reset Enhancements
+   ================================================ */
+html body {
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+html body a {
+  color: var(--sb-link);
+  text-decoration: underline;
+}
+
+html body a:hover,
+html body a:focus {
+  text-decoration: none;
+}
+
+/* Improved focus (AAA-friendly) */
+html body :focus-visible {
+  outline: 3px solid var(--sb-focus);
+  outline-offset: 2px;
+}
+
+/* Logical properties (safe modern addition) */
+html body .pull-left { float: inline-start; }
+html body .pull-right { float: inline-end; }
+
+/* ================================================
+   5. Layout & Grid Safe Modernization
+   ================================================ */
+html body .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--sb-gutter) * -1);
+  margin-right: calc(var(--sb-gutter) * -1);
+}
+
+/* Note: Full col-* overrides would be extensive; this is starter */
+html body [class*="col-"] {
+  box-sizing: border-box;
+  padding-left: var(--sb-gutter);
+  padding-right: var(--sb-gutter);
+}
+
+/* Safe flex utilities */
+html body .sb-flex { display: flex; }
+html body .sb-flex-center { align-items: center; justify-content: center; }
+
+/* ================================================
+   6. Tier 1 Components - Buttons, Forms, Links, Typography
+   ================================================ */
+html body .btn {
+  border-radius: var(--sb-radius);
+  transition: var(--sb-transition);
+}
+
+html body .btn-primary {
+  background-color: var(--sb-primary);
+  border-color: var(--sb-primary);
+}
+
+html body .form-control {
+  border-radius: var(--sb-radius);
+  box-shadow: none;
+}
+
+html body .form-control:focus {
+  border-color: var(--sb-focus);
+  box-shadow: 0 0 0 0.2rem rgba(51, 122, 183, 0.25);
+}
+
+/* Typography contrast boost */
+html body h1, html body h2, html body h3,
+html body .h1, html body .h2, html body .h3 {
+  color: #222;
+}
+
+/* ================================================
+   7. Tier 2 Components - Navbar, Tables, Modals, Alerts
+   ================================================ */
+html body .navbar {
+  border-radius: 0;
+}
+
+html body .table > thead > tr > th {
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+html body .modal-content {
+  border-radius: 6px;
+}
+
+/* ================================================
+   8. Utility & Modern Feature Additions
+   ================================================ */
+html body .sb-mt-3 { margin-top: 1rem; }
+html body .sb-container-query {
+  container-type: inline-size;
+}
+
+/* ================================================
+   9. Performance & Final Rules
+   ================================================ */
+html body * {
+  will-change: auto; /* only where needed in future */
+}
+
+/* ================================================
+   10. Footer / Ready for Production
+   ================================================ */
+/* SnowBoots Core Overrides v0.1.0 - Ready for testing
+   Next: Test in instance → gather feedback → iterate */
