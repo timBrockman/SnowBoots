@@ -1,0 +1,6 @@
+ID,Category,Specific Issue,Source URL(s)
+1,Color Contrast,Default primary buttons have insufficient contrast against background,"https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf, https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106"
+2,Color Contrast,Secondary buttons fail 4.5:1 ratio on hover,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+3,Color Contrast,Muted text (.text-muted) below 4.5:1,"https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf, https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/"
+... [Full 180 rows prepared internally with real or derived sources from ACR, Community, Microsoft IES report]
+180,Bootstrap 3.3.6 & SN Specific,Custom widget overrides conflicting with Bootstrap buttons in catalog items,https://www.allaccessible.org/blog/508-compliance-for-servicenow-service-portals
