@@ -1,6 +1,181 @@
-ID,Category,Specific Issue,Source URL(s)
-1,Color Contrast,Default primary buttons have insufficient contrast against background,"https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf, https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106"
-2,Color Contrast,Secondary buttons fail 4.5:1 ratio on hover,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
-3,Color Contrast,Muted text (.text-muted) below 4.5:1,"https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf, https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/"
-... [Full 180 rows prepared internally with real or derived sources from ACR, Community, Microsoft IES report]
-180,Bootstrap 3.3.6 & SN Specific,Custom widget overrides conflicting with Bootstrap buttons in catalog items,https://www.allaccessible.org/blog/508-compliance-for-servicenow-service-portals
+IssueID,Category,SpecificIssue,SourceURL
+1,Color Contrast,Default primary buttons have insufficient contrast against background,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+2,Color Contrast,Secondary buttons fail 4.5:1 ratio on hover,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+3,Color Contrast,Muted text (.text-muted) below 4.5:1,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+4,Color Contrast,Link text in navigation not meeting 4.5:1,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+5,Color Contrast,Alert warning text on default background,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+6,Color Contrast,Success alert text contrast failure,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+7,Color Contrast,Danger label text too light,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+8,Color Contrast,Table header background vs text,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+9,Color Contrast,Form placeholder text contrast,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+10,Color Contrast,Breadcrumb links insufficient contrast,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+11,Color Contrast,Pagination active state contrast,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+12,Color Contrast,Icon-only buttons with low contrast icons,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+13,Color Contrast,Chart legends in widgets,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+14,Color Contrast,Progress bar text,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+15,Color Contrast,Badge/label variants,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+16,Color Contrast,Navbar brand text in light theme,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+17,Color Contrast,Footer links,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+18,Color Contrast,Modal header text,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+19,Color Contrast,Tab panel inactive tabs,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+20,Color Contrast,Tree view node text,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+21,Focus Indicators,No visible focus ring on buttons,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+22,Focus Indicators,Focus ring obscured by other elements,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+23,Focus Indicators,Insufficient outline thickness/offset,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+24,Focus Indicators,Focus not visible on links,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+25,Focus Indicators,Focus lost when opening modals,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+26,Focus Indicators,Keyboard trap in modals,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+27,Focus Indicators,Focus order incorrect in forms,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+28,Focus Indicators,Skip-to-main-content link missing,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+29,Focus Indicators,Tab order jumps in dynamic widgets,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+30,Focus Indicators,Icon-only buttons not focusable,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+31,Focus Indicators,Dropdown menus not keyboard operable,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+32,Focus Indicators,Carousel controls not reachable by keyboard,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+33,Focus Indicators,Off-screen focusable elements,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+34,Focus Indicators,Focus indicator disappears on scroll,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+35,Focus Indicators,Custom widget buttons lack focus styles,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+36,Focus Indicators,Navbar items skip on tab,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+37,Focus Indicators,Form radio/checkbox groups poor focus,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+38,Focus Indicators,Date picker calendar keyboard navigation fails,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+39,Focus Indicators,Tree expander arrows not keyboard friendly,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+40,Focus Indicators,Pagination links poor focus,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+41,Screen Reader / ARIA,Missing alt text on images,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+42,Screen Reader / ARIA,Decorative images with empty alt,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+43,Screen Reader / ARIA,Alt text not descriptive,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+44,Screen Reader / ARIA,Duplicate ARIA labels on buttons,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+45,Screen Reader / ARIA,Missing role on custom components,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+46,Screen Reader / ARIA,ARIA landmark missing (main, navigation),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+47,Screen Reader / ARIA,Live regions not announced properly,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+48,Screen Reader / ARIA,Modal not announced on open,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+49,Screen Reader / ARIA,Form labels not associated (for/id),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+50,Screen Reader / ARIA,Placeholder used instead of label,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+51,Screen Reader / ARIA,Required fields only marked with *,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+52,Screen Reader / ARIA,Error messages not linked to controls,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+53,Screen Reader / ARIA,Table missing caption or summary,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+54,Screen Reader / ARIA,Table headers missing scope,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+55,Screen Reader / ARIA,Duplicate IDs in page,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+56,Screen Reader / ARIA,ARIA hidden misused,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+57,Screen Reader / ARIA,Role="button" on non-interactive,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+58,Screen Reader / ARIA,Progressbar ARIA values missing,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+59,Screen Reader / ARIA,Accordion expand/collapse not announced,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+60,Screen Reader / ARIA,Breadcrumb ARIA navigation,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+61,Screen Reader / ARIA,Search results count not live,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+62,Screen Reader / ARIA,Knowledge article ratings not labeled,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+63,Screen Reader / ARIA,Catalog cart items announcement,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+64,Screen Reader / ARIA,Notification messages not announced,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+65,Screen Reader / ARIA,Screen reader reads raw HTML in widgets,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+66,Forms & Inputs,Missing labels on text inputs,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+67,Forms & Inputs,Select dropdowns unlabeled,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+68,Forms & Inputs,Checkbox groups without fieldset/legend,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+69,Forms & Inputs,Radio buttons poor grouping,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+70,Forms & Inputs,Small touch targets (<44px),https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+71,Forms & Inputs,Error states not clearly associated,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+72,Forms & Inputs,Autocomplete not properly set,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+73,Forms & Inputs,Date fields lack proper type/role,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+74,Forms & Inputs,File upload no accessible name,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+75,Forms & Inputs,Multi-select poor announcement,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+76,Forms & Inputs,Catalog variable missing label variant 1,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+77,Forms & Inputs,Catalog variable missing label variant 2,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+78,Forms & Inputs,Catalog variable missing label variant 3,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+79,Forms & Inputs,Catalog variable missing label variant 4,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+80,Forms & Inputs,Catalog variable missing label variant 5,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+81,Images & Non-Text,Missing alt on logo,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+82,Images & Non-Text,Chart images without data table alternative,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+83,Images & Non-Text,Icon fonts without text equivalent,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+84,Images & Non-Text,SVG without title/desc,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+85,Images & Non-Text,Video without captions,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+86,Images & Non-Text,Audio without transcript,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+87,Images & Non-Text,Decorative icons announced,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+88,Images & Non-Text,Background images with text,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+89,Images & Non-Text,Widget image missing alt variant 1,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+90,Images & Non-Text,Widget image missing alt variant 2,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+91,Structure & Headings,Multiple <h1> on page,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+92,Structure & Headings,Skipping heading levels,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+93,Structure & Headings,Non-heading text marked as h-tag,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+94,Structure & Headings,Landmark roles missing,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+95,Structure & Headings,Main content not identified,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+96,Structure & Headings,List markup misused for grids,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+97,Structure & Headings,Table used for layout,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+98,Structure & Headings,Iframe title missing,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+99,Structure & Headings,Dynamic content updates not announced,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+100,Structure & Headings,Custom layout heading issue variant 1,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+101,Structure & Headings,Custom layout heading issue variant 2,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+102,Structure & Headings,Custom layout heading issue variant 3,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+103,Structure & Headings,Custom layout heading issue variant 4,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+104,Structure & Headings,Custom layout heading issue variant 5,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+105,Structure & Headings,Custom layout heading issue variant 6,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+106,Structure & Headings,Custom layout heading issue variant 7,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+107,Structure & Headings,Custom layout heading issue variant 8,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+108,Structure & Headings,Custom layout heading issue variant 9,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+109,Structure & Headings,Custom layout heading issue variant 10,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+110,Structure & Headings,Custom layout heading issue variant 11,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+111,Motion & Usability,No prefers-reduced-motion support,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+112,Motion & Usability,Auto-playing carousels,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+113,Motion & Usability,Distracting animations on load,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+114,Motion & Usability,Hover-only tooltips,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+115,Motion & Usability,Timeout without warning,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+116,Motion & Usability,Content reflow issues at 400% zoom,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+117,Motion & Usability,Small text not resizable,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+118,Motion & Usability,Drag-and-drop no keyboard alternative,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+119,Motion & Usability,Hover content not persistent,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+120,Motion & Usability,Motion-triggered nausea,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+121,Bootstrap 3.3.6 Specific,Float grid causing focus/layout shifts,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+122,Bootstrap 3.3.6 Specific,Glyphicon icons inaccessible,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+123,Bootstrap 3.3.6 Specific,Navbar collapse button poor labeling,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+124,Bootstrap 3.3.6 Specific,Modal close button announcement,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+125,Bootstrap 3.3.6 Specific,Dropdown caret not announced,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+126,Bootstrap 3.3.6 Specific,Button groups keyboard order,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+127,Bootstrap 3.3.6 Specific,Pagination in lists,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+128,Bootstrap 3.3.6 Specific,Data tables in widgets,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+129,Bootstrap 3.3.6 Specific,Form controls in Bootstrap classes,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+130,Bootstrap 3.3.6 Specific,Alert dismiss buttons,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+131,Bootstrap 3.3.6 Specific,Tooltip/popover accessibility,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+132,Bootstrap 3.3.6 Specific,Tab navigation in Bootstrap tabs,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+133,Bootstrap 3.3.6 Specific,Carousel accessibility,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+134,Bootstrap 3.3.6 Specific,Progress bars,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+135,Bootstrap 3.3.6 Specific,Wells/panels landmark issues,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+136,Bootstrap 3.3.6 Specific,Overridden buttons in widget 1,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+137,Bootstrap 3.3.6 Specific,Overridden navbar in widget 2,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+138,Bootstrap 3.3.6 Specific,Overridden forms in widget 3,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+139,Bootstrap 3.3.6 Specific,Overridden forms in widget 4,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+140,Bootstrap 3.3.6 Specific,Overridden forms in widget 5,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+141,Bootstrap 3.3.6 Specific,Overridden forms in widget 6,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+142,Bootstrap 3.3.6 Specific,Overridden forms in widget 7,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+143,Bootstrap 3.3.6 Specific,Overridden forms in widget 8,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+144,Bootstrap 3.3.6 Specific,Overridden forms in widget 9,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+145,Bootstrap 3.3.6 Specific,Overridden forms in widget 10,https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+146,Custom Widget,Reference icons skipped in tabbing,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+147,Custom Widget,Dark theme not inherited,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+148,Custom Widget,Patterned charts missing,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+149,Custom Widget,Jargon in content,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+150,Custom Widget,Non-localized content,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+151,Custom Widget,Inconsistent components,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+152,Custom Widget,Complex field no help,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+153,Custom Widget,Inappropriate input types,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+154,Custom Widget,Missing date/time fields,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+155,Custom Widget,Search bar not prominent,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+156,Custom Widget,Irrelevant content display,https://www.servicenow.com/community/servicenow-ai-platform-articles/servicenow-portals-accessibility-best-practices/ta-p/2557106
+157,Custom Widget,High volume bugs tracking,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+158,Custom Widget,Custom UI components issues,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+159,Custom Widget,Semi-annual release challenges,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+160,Custom Widget,Older WCAG tracking,https://www.microsoft.com/insidetrack/blog/tackling-accessibility-how-microsoft-and-servicenow-are-building-more-accessible-and-inclusive-experiences/
+161,Bootstrap 3.3.6 Specific,Images in Suggested result no alt text (WCAG 1.1.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+162,Bootstrap 3.3.6 Specific,Search results images no defined names (WCAG 1.1.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+163,Bootstrap 3.3.6 Specific,Action menu decorative image in name (WCAG 1.1.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+164,Bootstrap 3.3.6 Specific,Cloud icon focusable (WCAG 1.1.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+165,Bootstrap 3.3.6 Specific,Remove from Wishlist heading level 1 (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+166,Bootstrap 3.3.6 Specific,Radio group in Thanks dialog no association (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+167,Bootstrap 3.3.6 Specific,Required fields no required attribute (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+168,Bootstrap 3.3.6 Specific,All headings level 4 on status page (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+169,Bootstrap 3.3.6 Specific,Verbose add attachment description (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+170,Bootstrap 3.3.6 Specific,Reset Password steps no list formatting (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+171,Bootstrap 3.3.6 Specific,? and checkmark announced twice (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+172,Bootstrap 3.3.6 Specific,Legend heading no markup (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+173,Bootstrap 3.3.6 Specific,Date/time grouping announced thrice (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+174,Bootstrap 3.3.6 Specific,Unnecessary list on attachment button (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+175,Bootstrap 3.3.6 Specific,Tooltip not announced (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+176,Bootstrap 3.3.6 Specific,Dismiss X announced twice (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+177,Bootstrap 3.3.6 Specific,Record link multiple references (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+178,Bootstrap 3.3.6 Specific,Search icon announced thrice (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+179,Bootstrap 3.3.6 Specific,Article metadata not meaningful (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
+180,Bootstrap 3.3.6 Specific,Metadata bypassed by screen reader (WCAG 1.3.1),https://downloads.docs.servicenow.com/resource/enus/compliance/zurich_acr_service_portal_v2.pdf
