@@ -1,87 +1,368 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SnowBoots • WCAG Litmus Test Widget v0.1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnowBoots • WCAG Litmus Test Widget v0.2</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <!-- SnowBoots overrides: CSS-compatible SCSS — also load via Theme → CSS Includes in ServiceNow -->
+  <link rel="stylesheet" href="../snowboots-core-overrides.scss">
+  <link rel="stylesheet" href="../snowboots-a11y.scss">
   <style>
-    body { padding: 20px; background: #f9f9f9; }
-    .test-section { margin: 30px 0; padding: 20px; border: 2px solid #ddd; background: white; }
-    .override-label { background: #fff3cd; padding: 8px; border-left: 5px solid #f0ad4e; font-weight: bold; }
-    .pass { color: green; } .fail { color: red; }
+    body { padding: 20px; background: #f9f9f9; font-size: 1rem; }
+    .litmus-intro { background: #fff; border: 2px solid #337ab7; padding: 16px; margin-bottom: 24px; }
+    .litmus-intro ol { margin-bottom: 0; }
+    .category-block { margin: 40px 0 20px; padding-top: 10px; border-top: 3px solid #003366; }
+    .category-block h2 { color: #003366; margin-top: 0; }
+    .test-section { margin: 20px 0; padding: 16px; border: 1px solid #ccc; background: #fff; }
+    .test-section h3 { margin-top: 0; font-size: 1.1rem; }
+    .issue-id { display: inline-block; background: #003366; color: #fff; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-right: 8px; font-size: 0.85rem; }
+    .issue-badge { display: inline-block; background: #dff0d8; color: #155724; font-size: 0.75rem; padding: 2px 6px; border-radius: 3px; margin-left: 8px; }
+    .ac-block, .test-block { font-size: 0.9rem; margin: 8px 0; padding: 8px; background: #f5f5f5; border-left: 4px solid #888; }
+    .ac-block { border-left-color: #003366; }
+    .test-block { border-left-color: #f0ad4e; }
+    .fixture { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; }
+    .fixture-label { font-size: 0.8rem; color: #555; margin-bottom: 8px; font-weight: bold; }
+    .scroll-test-zone { height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; }
+    .scroll-test-zone .spacer { height: 300px; background: linear-gradient(#fff, #eee); }
+    .widget { border: 2px dotted #337ab7; padding: 12px; margin-top: 8px; }
+    .widget-label { font-size: 0.75rem; color: #337ab7; font-weight: bold; text-transform: uppercase; }
+    .chart-legend span { display: inline-block; margin-right: 16px; }
+    .chart-legend .swatch { display: inline-block; width: 12px; height: 12px; background: #286090; margin-right: 4px; }
+    .treeview .node { padding: 4px 0; }
+    .motion-demo { display: inline-block; width: 40px; height: 40px; background: #337ab7; animation: litmus-spin 2s linear infinite; }
+    @keyframes litmus-spin { to { transform: rotate(360deg); } }
+    .checklist { columns: 2; font-size: 0.85rem; }
+    @media (max-width: 768px) { .checklist { columns: 1; } }
+    footer.litmus-footer { margin-top: 40px; padding: 20px; background: #eee; }
+    .modal-static { position: relative; display: block; z-index: 1; }
+    .compare-row { display: flex; flex-wrap: wrap; gap: 16px; }
+    .compare-row > div { flex: 1; min-width: 200px; }
   </style>
 </head>
 <body>
 
-<h1>🚦 SnowBoots / ServiceNow WCAG Litmus Test • v0.1</h1>
-<p><strong>Quick litmus test</strong> — catches 80% of common portal/theme issues before full axe-core run.<br>
-Copy this widget anywhere. Works in any ServiceNow portal OR standalone.</p>
-
-<div class="test-section">
-  <h3>1. Color Contrast & Theme Variables</h3>
-  <div class="override-label">Override target: <code>:root { --sb-primary: ... }</code> or <code>html body .btn-primary</code></div>
-  <button class="btn btn-primary">Primary Button (should be ≥7:1 on bg)</button>
-  <button class="btn btn-success">Success (check text)</button>
-  <span class="label label-danger">Danger label</span>
-  <p class="text-muted">Muted text — should NOT be too light</p>
+<div class="litmus-intro">
+  <h1>SnowBoots WCAG Litmus Test <small>v0.2 — 34 a11y.scss remediated issues</small></h1>
+  <p>Maps each remediated issue from <code>research/master-list.tsv</code> to a DOM fixture, acceptance criteria, and test procedure.</p>
+  <ol>
+    <li>Load this page with Bootstrap 3.3.6 + <code>snowboots-core-overrides.scss</code> + <code>snowboots-a11y.scss</code> (via Theme CSS Includes in ServiceNow, or relative links for local dev).</li>
+    <li>Work through each <code>#issue-NN</code> section below.</li>
+    <li>Run <strong>axe DevTools</strong> / <strong>WAVE</strong> on contrast sections; use browser <strong>Contrast Checker</strong> on flagged elements.</li>
+    <li>Keyboard-only tab through focus sections; emulate <strong>prefers-reduced-motion</strong> in DevTools → Rendering for motion sections.</li>
+    <li>Set browser font size to 200% for issue #117.</li>
+  </ol>
+  <p><strong>Checklist (34):</strong></p>
+  <div class="checklist">
+    <label><input type="checkbox"> #1 Primary btn contrast</label>
+    <label><input type="checkbox"> #2 Secondary hover</label>
+    <label><input type="checkbox"> #3 .text-muted</label>
+    <label><input type="checkbox"> #4 Nav links</label>
+    <label><input type="checkbox"> #5 Alert warning</label>
+    <label><input type="checkbox"> #6 Alert success</label>
+    <label><input type="checkbox"> #7 Danger label/alert</label>
+    <label><input type="checkbox"> #8 Table headers</label>
+    <label><input type="checkbox"> #9 Placeholder</label>
+    <label><input type="checkbox"> #10 Breadcrumbs</label>
+    <label><input type="checkbox"> #11 Pagination active</label>
+    <label><input type="checkbox"> #12 Icon-only btn</label>
+    <label><input type="checkbox"> #13 Chart legend</label>
+    <label><input type="checkbox"> #14 Progress bar</label>
+    <label><input type="checkbox"> #15 Badge/label variants</label>
+    <label><input type="checkbox"> #16 Navbar brand</label>
+    <label><input type="checkbox"> #17 Footer links</label>
+    <label><input type="checkbox"> #18 Modal header</label>
+    <label><input type="checkbox"> #19 Tab states</label>
+    <label><input type="checkbox"> #20 Tree node text</label>
+    <label><input type="checkbox"> #21 Button focus ring</label>
+    <label><input type="checkbox"> #22 Focus not obscured</label>
+    <label><input type="checkbox"> #23 Outline thickness</label>
+    <label><input type="checkbox"> #24 Link focus</label>
+    <label><input type="checkbox"> #34 Focus on scroll</label>
+    <label><input type="checkbox"> #35 Widget btn focus</label>
+    <label><input type="checkbox"> #40 Pagination focus</label>
+    <label><input type="checkbox"> #70 Touch targets</label>
+    <label><input type="checkbox"> #111 Reduced motion</label>
+    <label><input type="checkbox"> #113 Load animations</label>
+    <label><input type="checkbox"> #117 Text resize</label>
+    <label><input type="checkbox"> #120 Motion nausea</label>
+    <label><input type="checkbox"> #146 Widget placeholder</label>
+    <label><input type="checkbox"> #156 Widget consistency</label>
+  </div>
 </div>
 
-<div class="test-section">
-  <h3>2. Buttons & Interactive Elements</h3>
-  <div class="override-label">Override: <code>.btn:focus-visible</code> + hover states</div>
-  <button class="btn btn-default">Default • Tab to me</button>
-  <button class="btn btn-lg btn-primary">Large Primary</button>
+<!-- ============================================================ -->
+<!-- COLOR CONTRAST — Issues 1–20                                 -->
+<!-- ============================================================ -->
+<div class="category-block" id="cat-contrast">
+  <h2>Color Contrast <small>(Issues 1–20)</small></h2>
+
+  <div class="test-section" id="issue-01">
+    <h3><span class="issue-id">#1</span> Default primary buttons <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All primary buttons achieve at least 7:1 contrast ratio in normal text and 4.5:1 in large text.</div>
+    <div class="test-block"><strong>Test:</strong> Inspect <code>.btn-primary</code> with DevTools Contrast Checker; confirm ratio &ge;7:1 and text remains readable.</div>
+    <div class="fixture">
+      <div class="fixture-label">Fixture</div>
+      <button class="btn btn-primary">Primary Button</button>
+      <button class="btn btn-lg btn-primary">Large Primary</button>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-02">
+    <h3><span class="issue-id">#2</span> Secondary buttons hover contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Hover state on secondary buttons meets 4.5:1 ratio; no regression in non-hover state.</div>
+    <div class="test-block"><strong>Test:</strong> Hover or keyboard-focus <code>.btn-default</code>; verify contrast with browser contrast tool.</div>
+    <div class="fixture">
+      <button class="btn btn-default">Default — hover or Tab to focus me</button>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-03">
+    <h3><span class="issue-id">#3</span> Muted text (.text-muted) <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All <code>.text-muted</code> instances achieve &ge;4.5:1 (target 7:1) contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Scan with axe-core; confirm muted text contrast passes.</div>
+    <div class="fixture">
+      <p class="text-muted">Muted help text — labels, secondary info, catalog hints.</p>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-04">
+    <h3><span class="issue-id">#4</span> Navigation link contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All navigation links meet 4.5:1 minimum (7:1 AAA target).</div>
+    <div class="test-block"><strong>Test:</strong> Tab through navbar links; use WAVE to flag link contrast.</div>
+    <div class="fixture">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Portal</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Service Catalog</a></li>
+            <li><a href="#">Knowledge</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-05">
+    <h3><span class="issue-id">#5</span> Alert warning contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Warning alert text/background achieves &ge;7:1 contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Inspect <code>.alert-warning</code> with axe; confirm pass.</div>
+    <div class="fixture">
+      <div class="alert alert-warning" role="alert">Warning: catalog item requires approval before checkout.</div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-06">
+    <h3><span class="issue-id">#6</span> Alert success contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Success alert text/background achieves at least 7:1 contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Trigger or inspect <code>.alert-success</code>; run Contrast Checker.</div>
+    <div class="fixture">
+      <div class="alert alert-success" role="alert">Success: your request was submitted.</div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-07">
+    <h3><span class="issue-id">#7</span> Danger label / alert contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All danger elements achieve 7:1 contrast; distinguishable from success/warning.</div>
+    <div class="test-block"><strong>Test:</strong> Inspect <code>.label-danger</code> and <code>.alert-danger</code> with WAVE or axe.</div>
+    <div class="fixture">
+      <span class="label label-danger">Critical</span>
+      <div class="alert alert-danger" role="alert">Error: required field missing.</div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-08">
+    <h3><span class="issue-id">#8</span> Table header contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Table headers achieve at least 7:1 contrast; zebra striping readable.</div>
+    <div class="test-block"><strong>Test:</strong> Run axe on <code>th</code> elements in table section.</div>
+    <div class="fixture">
+      <table class="table table-striped">
+        <thead><tr><th>Incident</th><th>Priority</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>INC0010001</td><td>High</td><td>Open</td></tr>
+          <tr><td>INC0010002</td><td>Low</td><td>Closed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-09">
+    <h3><span class="issue-id">#9</span> Form placeholder contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Placeholders achieve minimum 4.5:1 contrast and remain visible when focused.</div>
+    <div class="test-block"><strong>Test:</strong> Focus input; inspect <code>::placeholder</code> with Contrast Checker before typing.</div>
+    <div class="fixture">
+      <input type="text" class="form-control" placeholder="Search catalog items…">
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-10">
+    <h3><span class="issue-id">#10</span> Breadcrumb link contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Breadcrumb links meet 4.5:1 minimum; active item distinguishable.</div>
+    <div class="test-block"><strong>Test:</strong> Tab through breadcrumbs; verify with WAVE.</div>
+    <div class="fixture">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Service Catalog</a></li>
+        <li class="active">Laptop Request</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-11">
+    <h3><span class="issue-id">#11</span> Pagination active state <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Active pagination items achieve at least 7:1 contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Tab through pagination; run axe on <code>.pagination .active</code>.</div>
+    <div class="fixture">
+      <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li class="active"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-12">
+    <h3><span class="issue-id">#12</span> Icon-only button contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Icon-only buttons achieve minimum 4.5:1 icon contrast (7:1 target).</div>
+    <div class="test-block"><strong>Test:</strong> Inspect glyphicon with color picker and contrast tool.</div>
+    <div class="fixture">
+      <button class="btn btn-default" type="button" aria-label="Edit record"><span class="glyphicon glyphicon-pencil"></span></button>
+      <button class="btn btn-default" type="button" aria-label="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-13">
+    <h3><span class="issue-id">#13</span> Chart legend contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Chart legend items achieve &ge;4.5:1 contrast at 100% zoom.</div>
+    <div class="test-block"><strong>Test:</strong> Run WAVE on <code>.chart-legend</code> text.</div>
+    <div class="fixture">
+      <div class="chart-legend">
+        <span><span class="swatch"></span>Incidents</span>
+        <span><span class="swatch" style="background:#3d8b3d"></span>Resolved</span>
+        <span><span class="swatch" style="background:#ec971f"></span>Pending</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-14">
+    <h3><span class="issue-id">#14</span> Progress bar text <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Progress bar text achieves 7:1 contrast against bar background.</div>
+    <div class="test-block"><strong>Test:</strong> Inspect inner text of each <code>.progress-bar</code> variant with axe.</div>
+    <div class="fixture">
+      <div class="progress"><div class="progress-bar" style="width:60%">60% Complete</div></div>
+      <div class="progress"><div class="progress-bar progress-bar-success" style="width:40%">40%</div></div>
+      <div class="progress"><div class="progress-bar progress-bar-warning" style="width:25%">25%</div></div>
+      <div class="progress"><div class="progress-bar progress-bar-danger" style="width:10%">10%</div></div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-15">
+    <h3><span class="issue-id">#15</span> Badge / label variants <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Every badge/label variant meets minimum 7:1 contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Scan all variants below with axe-core.</div>
+    <div class="fixture">
+      <span class="label label-default">Default</span>
+      <span class="label label-primary">Primary</span>
+      <span class="label label-success">Success</span>
+      <span class="label label-warning">Warning</span>
+      <span class="label label-danger">Danger</span>
+      <span class="label label-info">Info</span>
+      <span class="badge">4</span>
+      <span class="badge badge-success">OK</span>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-16">
+    <h3><span class="issue-id">#16</span> Navbar brand text <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Navbar brand text achieves at least 7:1 contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Inspect <code>.navbar-brand</code> with contrast tool.</div>
+    <div class="fixture">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Acme Corp Service Portal</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-17">
+    <h3><span class="issue-id">#17</span> Footer links <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Footer links meet 4.5:1 minimum (7:1 target).</div>
+    <div class="test-block"><strong>Test:</strong> Tab through footer links; verify with WAVE.</div>
+    <div class="fixture">
+      <footer class="litmus-footer">
+        <a href="#">Privacy Policy</a> &middot;
+        <a href="#">Terms of Use</a> &middot;
+        <a href="#">Contact Support</a>
+      </footer>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-18">
+    <h3><span class="issue-id">#18</span> Modal header text <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Modal header text achieves 7:1 contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Inspect <code>.modal-header .modal-title</code> contrast.</div>
+    <div class="fixture">
+      <div class="modal modal-static" tabindex="-1">
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Confirm Delete Record</h4>
+          </div>
+          <div class="modal-body"><p>Are you sure you want to delete this item?</p></div>
+          <div class="modal-footer">
+            <button class="btn btn-default">Cancel</button>
+            <button class="btn btn-danger">Delete</button>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-19">
+    <h3><span class="issue-id">#19</span> Tab panel inactive/active contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All tab states meet 4.5:1 with clear active distinction.</div>
+    <div class="test-block"><strong>Test:</strong> Click through tabs; inspect inactive and active with axe.</div>
+    <div class="fixture">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-a" data-toggle="tab">Details</a></li>
+        <li><a href="#tab-b" data-toggle="tab">Activity</a></li>
+        <li><a href="#tab-c" data-toggle="tab">Attachments</a></li>
+      </ul>
+      <div class="tab-content" style="padding:12px;border:1px solid #ddd;border-top:none;">
+        <div class="tab-pane active" id="tab-a">Details panel content.</div>
+        <div class="tab-pane" id="tab-b">Activity panel content.</div>
+        <div class="tab-pane" id="tab-c">Attachments panel content.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-20">
+    <h3><span class="issue-id">#20</span> Tree view node text <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Tree node text achieves minimum 7:1 contrast.</div>
+    <div class="test-block"><strong>Test:</strong> Run contrast check on <code>.treeview .node</code> labels.</div>
+    <div class="fixture">
+      <div class="treeview">
+        <div class="node">Knowledge Base</div>
+        <div class="node" style="padding-left:16px">Getting Started</div>
+        <div class="node" style="padding-left:16px">IT Policies</div>
+        <div class="node">Service Catalog Categories</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="test-section">
-  <h3>3. Forms & Touch Targets</h3>
-  <div class="override-label">Override: <code>.form-control</code> + <code>min-height: 44px</code></div>
-  <label>Username <span class="text-danger">*</span></label>
-  <input type="text" class="form-control" placeholder="Should have 44px+ height">
-  <select class="form-control"><option>Error state simulation</option></select>
-</div>
-
-<div class="test-section">
-  <h3>4. Typography & Links</h3>
-  <div class="override-label">Override: <code>a, h1-h6, .small</code> contrast</div>
-  <h1>Heading 1</h1>
-  <a href="#">This link must be ≥4.5:1 (AAA target 7:1)</a>
-  <small>Small text — often fails contrast</small>
-</div>
-
-<div class="test-section">
-  <h3>5. Focus Indicators & Keyboard Test</h3>
-  <div class="override-label">Override: <code>:focus-visible { outline: 4px solid #0066cc; }</code></div>
-  <p>Tab through this section → focus ring must be obvious and not obscured.</p>
-  <button class="btn btn-info">Tab me → Shift+Tab back</button>
-  <input type="text" class="form-control" placeholder="Focus me">
-</div>
-
-<div class="test-section">
-  <h3>6. Tables & Data</h3>
-  <div class="override-label">Override: <code>.table th, .table-striped</code></div>
-  <table class="table table-striped">
-    <thead><tr><th>Header (needs strong contrast)</th></tr></thead>
-    <tbody><tr><td>Row data • zebra check</td></tr></tbody>
-  </table>
-</div>
-
-<div class="test-section">
-  <h3>7. Alerts / Modals / Navbar Simulation</h3>
-  <div class="override-label">Override: <code>.alert, .navbar, .modal-content</code></div>
-  <div class="alert alert-warning">Warning alert — text must pop</div>
-  <nav class="navbar navbar-default">Navbar simulation • logo area contrast</nav>
-</div>
-
-<div class="test-section">
-  <h3>8. Reduced Motion + Final Checks</h3>
-  <div class="override-label">Override: <code>@media (prefers-reduced-motion)</code></div>
-  <button onclick="alert('Test reduced motion in DevTools → Rendering')">Click me then emulate reduced motion</button>
-  <p>✅ Quick Pass/Fail: All text ≥7:1? Focus visible? Buttons ≥44px? No motion issues?</p>
-</div>
-
+<!-- ============================================================ -->
+<!-- FOCUS INDICATORS — Issues 21–24, 34, 35, 40                  -->
+<!-- ============================================================ -->
 <hr>
-<p><strong>Next steps after this litmus test:</strong> Run axe DevTools + WAVE + keyboard-only navigation.<br>
-Copy overrides into <code>snowboots-core-overrides.scss</code> or <code>snowboots-a11y.scss</code>.</p>
-
+<p><strong>After completing all 34 checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
