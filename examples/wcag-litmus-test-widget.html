@@ -521,8 +521,49 @@
 <!-- ============================================================ -->
 <!-- WIDGET SCOPED — Issues 146, 156                              -->
 <!-- ============================================================ -->
+<div class="category-block" id="cat-widget">
+  <h2>Widget-Scoped Overrides <small>(Issues 146, 156)</small></h2>
+
+  <div class="test-section" id="issue-146">
+    <h3><span class="issue-id">#146</span> Widget form placeholder contrast <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Placeholders and contrast apply inside widget forms.</div>
+    <div class="test-block"><strong>Test:</strong> Focus widget input; inspect <code>.widget .form-control::placeholder</code> contrast.</div>
+    <div class="fixture">
+      <div class="widget">
+        <span class="widget-label">Widget form</span>
+        <label>Catalog variable</label>
+        <input type="text" class="form-control" placeholder="Widget placeholder text…">
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-156">
+    <h3><span class="issue-id">#156</span> Widget style consistency <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Widget components match SnowBoots core styles (buttons, forms).</div>
+    <div class="test-block"><strong>Test:</strong> Visual comparison: core fixtures vs widget fixtures — primary button and form control should match.</div>
+    <div class="fixture">
+      <div class="compare-row">
+        <div>
+          <div class="fixture-label">Core (outside .widget)</div>
+          <button class="btn btn-primary">Core Primary</button>
+          <input type="text" class="form-control" placeholder="Core placeholder" style="margin-top:8px;">
+        </div>
+        <div>
+          <div class="fixture-label">Inside .widget</div>
+          <div class="widget">
+            <button class="btn btn-primary">Widget Primary</button>
+            <input type="text" class="form-control" placeholder="Widget placeholder" style="margin-top:8px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <hr>
-<p><strong>After completing all 34 checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.</p>
+<p><strong>After completing all 34 checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.<br>
+SnowBoots a11y v0.2.0 — see <code>snowboots-a11y.scss</code> and <code>research/master-list.tsv</code>.</p>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
