@@ -1,7 +1,7 @@
 /* ================================================
    SnowBoots - a11y Overrides
    Dedicated accessibility layer for ServiceNow Bootstrap 3.3.6
-   Version: 0.1.0 (MVP Draft - June 2026)
+   Version: 0.2.0 (June 2026)
    Purpose: WCAG AAA-targeted enhancements (contrast, focus, motion)
    ================================================ */
 
@@ -26,16 +26,182 @@
    /* Targets AAA where CSS can (contrast 7:1, enhanced focus). Notes: Some AAA (e.g. 3.3.6) need JS/widgets */
 
 /* ================================================
-   4. High Contrast & Color Overrides
+   4. Accessible Color Tokens & Contrast Overrides
+      Issues: 1–20
    ================================================ */
 html body {
   --sb-text-contrast: #111;
   --sb-bg-contrast: #fff;
+  --sb-a11y-primary: #003366;
+  --sb-a11y-primary-text: #fff;
+  --sb-a11y-muted: #555;
+  --sb-a11y-link: #004080;
+  --sb-a11y-icon: #222;
+  --sb-a11y-table-header-bg: #333;
+  --sb-a11y-table-header-text: #fff;
+  --sb-a11y-focus-ring: #0066cc;
+  --sb-a11y-danger-bg: #c9302c;
+  --sb-a11y-danger-text: #fff;
+  --sb-a11y-warning-bg: #ffe699;
+  --sb-a11y-warning-text: #000;
+  --sb-a11y-success-bg: #c3e6cb;
+  --sb-a11y-success-text: #155724;
+  --sb-a11y-secondary-hover-bg: #555;
+  --sb-a11y-secondary-hover-text: #fff;
+  --sb-a11y-tab-inactive: #555;
+  --sb-a11y-progress-bg: #286090;
+  --sb-a11y-progress-text: #fff;
 }
 
-html body .btn,
-html body .alert {
-  color: #000 !important; /* AAA boost for critical UI */
+/* Buttons — issues 1, 2, 12 */
+html body .btn-primary {
+  background-color: var(--sb-a11y-primary) !important;
+  border-color: var(--sb-a11y-primary) !important;
+  color: var(--sb-a11y-primary-text) !important;
+}
+
+html body .btn-default:hover,
+html body .btn-default:focus {
+  background-color: var(--sb-a11y-secondary-hover-bg) !important;
+  color: var(--sb-a11y-secondary-hover-text) !important;
+}
+
+html body .btn .glyphicon {
+  color: var(--sb-a11y-icon) !important;
+}
+
+/* Text & links — issues 3, 4, 9, 10, 16, 17, 20 */
+html body .text-muted {
+  color: var(--sb-a11y-muted) !important;
+}
+
+html body .form-control::placeholder {
+  color: var(--sb-a11y-muted) !important;
+  opacity: 1;
+}
+
+html body .navbar a,
+html body .breadcrumb a,
+html body footer a {
+  color: var(--sb-a11y-link) !important;
+}
+
+html body .breadcrumb > li > a {
+  font-weight: bold;
+}
+
+html body .navbar-brand {
+  color: var(--sb-text-contrast) !important;
+  font-weight: 700;
+}
+
+html body .treeview .node {
+  color: var(--sb-a11y-icon);
+}
+
+/* Alerts & labels — issues 5, 6, 7, 15 */
+html body .alert-warning {
+  background-color: var(--sb-a11y-warning-bg) !important;
+  color: var(--sb-a11y-warning-text) !important;
+}
+
+html body .alert-success {
+  background-color: var(--sb-a11y-success-bg) !important;
+  color: var(--sb-a11y-success-text) !important;
+}
+
+html body .alert-danger,
+html body .label-danger {
+  background-color: var(--sb-a11y-danger-bg) !important;
+  color: var(--sb-a11y-danger-text) !important;
+}
+
+html body .label-default {
+  background-color: #555 !important;
+  color: #fff !important;
+}
+
+html body .label-primary,
+html body .badge {
+  background-color: var(--sb-a11y-primary) !important;
+  color: var(--sb-a11y-primary-text) !important;
+}
+
+html body .label-success,
+html body .badge-success {
+  background-color: #3d8b3d !important;
+  color: #fff !important;
+}
+
+html body .label-warning,
+html body .badge-warning {
+  background-color: #ec971f !important;
+  color: #000 !important;
+}
+
+html body .label-info,
+html body .badge-info {
+  background-color: #31b0d5 !important;
+  color: #000 !important;
+}
+
+/* Data & navigation — issues 8, 11, 13, 14, 18, 19 */
+html body .table > thead > tr > th,
+html body .table th {
+  background-color: var(--sb-a11y-table-header-bg) !important;
+  color: var(--sb-a11y-table-header-text) !important;
+}
+
+html body .pagination > .active > a,
+html body .pagination > .active > a:hover,
+html body .pagination > .active > a:focus {
+  background-color: var(--sb-a11y-primary) !important;
+  border-color: var(--sb-a11y-primary) !important;
+  color: var(--sb-a11y-primary-text) !important;
+}
+
+html body .chart-legend {
+  color: var(--sb-a11y-icon) !important;
+  font-weight: bold;
+}
+
+html body .progress-bar {
+  background-color: var(--sb-a11y-progress-bg) !important;
+  color: var(--sb-a11y-progress-text) !important;
+}
+
+html body .progress-bar-success {
+  background-color: #3d8b3d !important;
+}
+
+html body .progress-bar-info {
+  background-color: #31b0d5 !important;
+}
+
+html body .progress-bar-warning {
+  background-color: #ec971f !important;
+  color: #000 !important;
+}
+
+html body .progress-bar-danger {
+  background-color: var(--sb-a11y-danger-bg) !important;
+  color: var(--sb-a11y-danger-text) !important;
+}
+
+html body .modal-header .modal-title {
+  color: var(--sb-text-contrast);
+}
+
+html body .nav-tabs > li > a {
+  color: var(--sb-a11y-tab-inactive) !important;
+}
+
+html body .nav-tabs > li.active > a,
+html body .nav-tabs > li.active > a:hover,
+html body .nav-tabs > li.active > a:focus {
+  background-color: var(--sb-a11y-primary) !important;
+  border-color: var(--sb-a11y-primary) !important;
+  color: var(--sb-a11y-primary-text) !important;
 }
 
 /* ================================================
@@ -68,14 +234,10 @@ html body .small {
 }
 
 /* ================================================
-   8. Component-Specific a11y (Tables, Forms, Navbar)
+   8. Touch Targets & Form Controls
    ================================================ */
-html body .table th {
-  background: #f0f0f0;
-}
-
 html body .form-control {
-  min-height: 44px; /* better touch targets */
+  min-height: 44px;
 }
 
 /* ================================================
@@ -86,6 +248,6 @@ html body [role="alert"] {
 }
 
 /* ================================================
-   10. Footer / Ready for Production
+   10. Footer
    ================================================ */
-/* SnowBoots a11y v0.1.0 - Test with axe-core. Next: pair with core file */
+/* Remediates master-list #1-#20 */
