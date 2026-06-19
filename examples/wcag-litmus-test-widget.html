@@ -472,6 +472,55 @@
 <!-- ============================================================ -->
 <!-- MOTION & TYPOGRAPHY — Issues 111, 113, 117, 120              -->
 <!-- ============================================================ -->
+<div class="category-block" id="cat-motion">
+  <h2>Motion &amp; Typography <small>(Issues 111, 113, 117, 120)</small></h2>
+
+  <div class="test-section" id="issue-111">
+    <h3><span class="issue-id">#111</span> prefers-reduced-motion support <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All animations respect reduced-motion preference.</div>
+    <div class="test-block"><strong>Test:</strong> DevTools → Rendering → emulate <code>prefers-reduced-motion: reduce</code>; spinner below should stop.</div>
+    <div class="fixture">
+      <div class="motion-demo" title="Animated square"></div>
+      <span> Animated element — should freeze when reduced motion is on.</span>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-113">
+    <h3><span class="issue-id">#113</span> Distracting load animations <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Load animations are short (&lt;5s) or respect reduced motion.</div>
+    <div class="test-block"><strong>Test:</strong> Reload page with reduced motion enabled; confirm animations disabled.</div>
+    <div class="fixture">
+      <div class="motion-demo"></div> <code>animation-duration: 0.01ms</code> expected under reduced motion.
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-117">
+    <h3><span class="issue-id">#117</span> Text resizable to 200% <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All text resizes up to 200% without loss of content.</div>
+    <div class="test-block"><strong>Test:</strong> Set browser font size to 200% (or zoom 200%); confirm text scales and layout does not clip.</div>
+    <div class="fixture">
+      <p>Body text at <code>1rem</code></p>
+      <p class="small">Small text at <code>0.9rem</code></p>
+      <button class="btn btn-default">Button text at 1rem</button>
+      <input type="text" class="form-control" value="Form control text" style="max-width:280px;margin-top:8px;">
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-120">
+    <h3><span class="issue-id">#120</span> Motion-triggered nausea <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Motion-heavy elements respect <code>prefers-reduced-motion</code>.</div>
+    <div class="test-block"><strong>Test:</strong> Enable reduced motion; reload — spinning/block animation should not run.</div>
+    <div class="fixture">
+      <div class="motion-demo"></div>
+      <div class="motion-demo" style="animation-delay:0.5s;margin-left:8px;"></div>
+      Multiple animated elements — all should stop under reduced motion.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- WIDGET SCOPED — Issues 146, 156                              -->
+<!-- ============================================================ -->
 <hr>
 <p><strong>After completing all 34 checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.</p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
