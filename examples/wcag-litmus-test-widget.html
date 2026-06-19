@@ -453,6 +453,25 @@
 <!-- ============================================================ -->
 <!-- FORMS & TOUCH — Issue 70                                     -->
 <!-- ============================================================ -->
+<div class="category-block" id="cat-forms">
+  <h2>Forms &amp; Touch Targets <small>(Issue 70)</small></h2>
+
+  <div class="test-section" id="issue-70">
+    <h3><span class="issue-id">#70</span> Small touch targets (&lt;44px) <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All interactive elements have minimum 44px touch target.</div>
+    <div class="test-block"><strong>Test:</strong> Measure <code>.btn</code>, <code>.form-control</code>, checkbox/radio labels in DevTools or mobile emulator (&ge;44px).</div>
+    <div class="fixture">
+      <button class="btn btn-primary">Button target</button>
+      <input type="text" class="form-control" placeholder="Input target" style="max-width:280px;margin-top:8px;">
+      <div class="checkbox"><label><input type="checkbox"> Checkbox label target</label></div>
+      <div class="radio"><label><input type="radio" name="r"> Radio label target</label></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MOTION & TYPOGRAPHY — Issues 111, 113, 117, 120              -->
+<!-- ============================================================ -->
 <hr>
 <p><strong>After completing all 34 checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.</p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
