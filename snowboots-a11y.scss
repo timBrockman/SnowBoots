@@ -233,15 +233,53 @@ html body .widget .btn:focus-visible {
     scroll-behavior: auto !important;
   }
 }
-html body { line-height: 1.6; }
-html body .small { font-size: 0.9rem; }
 
-html body .form-control { min-height: 44px; }
+/* ================================================
+   7. Typography & Readable Text
+      Issue: 117
+   ================================================ */
+html {
+  font-size: 100%;
+}
 
+html body {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+html body .small {
+  font-size: 0.9rem;
+}
+
+html body .form-control,
+html body .btn {
+  font-size: 1rem;
+}
+
+/* ================================================
+   8. Touch Targets & Form Controls
+      Issue: 70
+   ================================================ */
+html body .form-control {
+  min-height: 44px;
+}
+
+html body .btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 16px;
+}
+
+html body .checkbox label,
+html body .radio label {
+  padding: 10px 0;
+  min-height: 44px;
+  display: inline-block;
+}
 /* ================================================
    10. ARIA Visual Helpers (non-destructive)
    ================================================ */
 html body [role="alert"] {
   border-left: 5px solid #d9534f;
 }
-/* Remediates #1-#20, #22, #34, #35 */
+/* Remediates #1-#20, #22, #34, #35, #70 */
