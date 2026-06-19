@@ -300,10 +300,15 @@ html body .widget .btn {
   min-height: 44px;
   min-width: 44px;
 }
+
 /* ================================================
    10. ARIA Visual Helpers (non-destructive)
    ================================================ */
 html body [role="alert"] {
   border-left: 5px solid #d9534f;
 }
-/* Remediates #1-#20, #22, #34, #35, #70, #113, #117, #120 */
+
+/* ================================================
+   11. Footer / Ready for Production
+   ================================================ */
+/* SnowBoots a11y v0.2.0 — Remediates master-list issues 1–20, 22, 34, 35, 70, 113, 117, 120, 146, 156 */
