@@ -360,6 +360,99 @@
 <!-- ============================================================ -->
 <!-- FOCUS INDICATORS — Issues 21–24, 34, 35, 40                  -->
 <!-- ============================================================ -->
+<div class="category-block" id="cat-focus">
+  <h2>Focus Indicators <small>(Issues 21–24, 34, 35, 40)</small></h2>
+
+  <div class="test-section" id="issue-21">
+    <h3><span class="issue-id">#21</span> Visible focus ring on buttons <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Every button shows clear focus indicator (min 3px outline, 3:1 contrast) until focus moves.</div>
+    <div class="test-block"><strong>Test:</strong> Keyboard-only tab through all buttons; confirm visible ring on each.</div>
+    <div class="fixture">
+      <button class="btn btn-primary">Tab to me</button>
+      <button class="btn btn-default">Then me</button>
+      <button class="btn btn-success">Then me</button>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-22">
+    <h3><span class="issue-id">#22</span> Focus ring not obscured <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Focus indicators never obscured; visible with sufficient offset in overlapping UI.</div>
+    <div class="test-block"><strong>Test:</strong> Tab through modal buttons below; confirm ring fully visible and not clipped.</div>
+    <div class="fixture">
+      <div class="modal modal-static">
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><h4 class="modal-title">Overlapping UI test</h4></div>
+          <div class="modal-body"><p>Tab between buttons — focus ring should remain visible (box-shadow fallback).</p></div>
+          <div class="modal-footer">
+            <button class="btn btn-default">Cancel</button>
+            <button class="btn btn-primary">Save</button>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-23">
+    <h3><span class="issue-id">#23</span> Outline thickness / offset <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Focus indicators use at least 3px thickness and 3px offset.</div>
+    <div class="test-block"><strong>Test:</strong> Focus any element; measure outline in DevTools (4px solid, 3px offset expected).</div>
+    <div class="fixture">
+      <input type="text" class="form-control" placeholder="Tab to measure outline" style="max-width:280px;">
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-24">
+    <h3><span class="issue-id">#24</span> Focus visible on links <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Every link shows clear focus ring when tabbed to.</div>
+    <div class="test-block"><strong>Test:</strong> Tab through links below; confirm visible indicator on each.</div>
+    <div class="fixture">
+      <p><a href="#">Content link one</a> &middot; <a href="#">Content link two</a> &middot; <a href="#">Content link three</a></p>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-34">
+    <h3><span class="issue-id">#34</span> Focus persists on scroll <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Focus indicator remains visible while scrolling focused element's container.</div>
+    <div class="test-block"><strong>Test:</strong> Tab to the button inside the scroll box; scroll while focused — ring stays visible.</div>
+    <div class="fixture">
+      <div class="scroll-test-zone">
+        <button class="btn btn-info">Focus me, then scroll this box</button>
+        <div class="spacer"></div>
+        <button class="btn btn-default">Bottom button</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-35">
+    <h3><span class="issue-id">#35</span> Custom widget button focus <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Custom widget buttons receive same high-contrast focus ring as core buttons.</div>
+    <div class="test-block"><strong>Test:</strong> Tab to buttons inside <code>.widget</code> wrapper; confirm visible focus.</div>
+    <div class="fixture">
+      <div class="widget">
+        <span class="widget-label">ServiceNow widget simulation</span><br>
+        <button class="btn btn-primary">Widget Action</button>
+        <button class="btn btn-default">Widget Secondary</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-40">
+    <h3><span class="issue-id">#40</span> Pagination link focus <span class="issue-badge">a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> All pagination links show clear focus ring and active state distinction.</div>
+    <div class="test-block"><strong>Test:</strong> Tab through pagination links; confirm focus on every <code>li a</code>.</div>
+    <div class="fixture">
+      <ul class="pagination">
+        <li><a href="#">1</a></li>
+        <li class="active"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FORMS & TOUCH — Issue 70                                     -->
+<!-- ============================================================ -->
 <hr>
 <p><strong>After completing all 34 checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.</p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
