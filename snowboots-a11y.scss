@@ -206,48 +206,42 @@ html body .nav-tabs > li.active > a:focus {
 
 /* ================================================
    5. Enhanced Focus Indicators
+      Issues: 22, 34, 35
    ================================================ */
 html body :focus-visible {
-  outline: 4px solid #0066cc;
+  outline: 4px solid var(--sb-a11y-focus-ring);
   outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.35);
+}
+
+html body .widget button:focus-visible,
+html body .widget .btn:focus-visible {
+  outline: 4px solid var(--sb-a11y-focus-ring);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.35);
 }
 
 /* ================================================
    6. Reduced Motion & Motion Safety
+      Issues: 111, 113, 120
    ================================================ */
 @media (prefers-reduced-motion: reduce) {
   html body * {
     transition: none !important;
     animation: none !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
+html body { line-height: 1.6; }
+html body .small { font-size: 0.9rem; }
+
+html body .form-control { min-height: 44px; }
 
 /* ================================================
-   7. Typography & Readable Text
-   ================================================ */
-html body {
-  line-height: 1.6;
-}
-
-html body .small {
-  font-size: 0.9rem;
-}
-
-/* ================================================
-   8. Touch Targets & Form Controls
-   ================================================ */
-html body .form-control {
-  min-height: 44px;
-}
-
-/* ================================================
-   9. ARIA Visual Helpers (non-destructive)
+   10. ARIA Visual Helpers (non-destructive)
    ================================================ */
 html body [role="alert"] {
   border-left: 5px solid #d9534f;
 }
-
-/* ================================================
-   10. Footer
-   ================================================ */
-/* Remediates master-list #1-#20 */
+/* Remediates #1-#20, #22, #34, #35 */
