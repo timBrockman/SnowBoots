@@ -276,10 +276,34 @@ html body .radio label {
   min-height: 44px;
   display: inline-block;
 }
+
+/* ================================================
+   9. Widget-Scoped Overrides
+      Issues: 146, 156
+   ================================================ */
+html body .widget .form-control {
+  min-height: 44px;
+}
+
+html body .widget .form-control::placeholder {
+  color: var(--sb-a11y-muted) !important;
+  opacity: 1;
+}
+
+html body .widget .btn-primary {
+  background-color: var(--sb-a11y-primary) !important;
+  border-color: var(--sb-a11y-primary) !important;
+  color: var(--sb-a11y-primary-text) !important;
+}
+
+html body .widget .btn {
+  min-height: 44px;
+  min-width: 44px;
+}
 /* ================================================
    10. ARIA Visual Helpers (non-destructive)
    ================================================ */
 html body [role="alert"] {
   border-left: 5px solid #d9534f;
 }
-/* Remediates #1-#20, #22, #34, #35, #70 */
+/* Remediates #1-#20, #22, #34, #35, #70, #113, #117, #120 */
