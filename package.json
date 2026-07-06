@@ -1,0 +1,18 @@
+{
+    "name": "x-1318094-snowboots",
+    "version": "1.0.0",
+    "description": "snowboots fluent branch",
+    "license": "UNLICENSED",
+    "scripts": {
+        "build": "now-sdk build",
+        "deploy": "now-sdk install",
+        "transform": "now-sdk transform",
+        "types": "now-sdk dependencies"
+    },
+    "devDependencies": {
+        "@servicenow/sdk": "4.8.1",
+        "@servicenow/glide": "26.0.1",
+        "eslint": "8.50.0",
+        "@servicenow/eslint-plugin-sdk-app-plugin": "4.8.1"
+    }
+}
