@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SnowBoots • WCAG Litmus Test Widget v0.2</title>
+  <title>SnowBoots • WCAG Litmus Test Widget v0.2.1</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <!-- SnowBoots overrides: CSS-compatible SCSS — also load via Theme → CSS Includes in ServiceNow -->
   <link rel="stylesheet" href="../snowboots-core-overrides.scss">
@@ -18,6 +18,7 @@
     .test-section h3 { margin-top: 0; font-size: 1.1rem; }
     .issue-id { display: inline-block; background: #003366; color: #fff; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-right: 8px; font-size: 0.85rem; }
     .issue-badge { display: inline-block; background: #dff0d8; color: #155724; font-size: 0.75rem; padding: 2px 6px; border-radius: 3px; margin-left: 8px; }
+    .issue-badge.pattern { background: #fcf8e3; color: #8a6d3b; }
     .ac-block, .test-block { font-size: 0.9rem; margin: 8px 0; padding: 8px; background: #f5f5f5; border-left: 4px solid #888; }
     .ac-block { border-left-color: #003366; }
     .test-block { border-left-color: #f0ad4e; }
@@ -42,17 +43,53 @@
 </head>
 <body>
 
+<!-- Phase A shell demo: skip link styles need snowboots-a11y.scss; markup mirrors examples/widgets/sb-header -->
+<a class="sb-skip-link sr-only-focusable" href="#main-content">Skip to main content</a>
+
+<header class="navbar navbar-default" role="banner" style="margin-bottom:0;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#litmus-primary-nav"
+        aria-controls="litmus-primary-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        id="litmus-nav-toggle"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#main-content">SnowBoots Litmus</a>
+    </div>
+    <nav id="litmus-primary-nav" class="collapse navbar-collapse" aria-label="Primary">
+      <ul class="nav navbar-nav">
+        <li><a href="#cat-contrast">Contrast</a></li>
+        <li><a href="#cat-phase-a">Phase A shell</a></li>
+        <li><a href="#cat-widget">Widgets</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" role="main" tabindex="-1">
+
 <div class="litmus-intro">
-  <h1>SnowBoots WCAG Litmus Test <small>v0.2 — 34 a11y.scss remediated issues</small></h1>
-  <p>Maps each remediated issue from <code>research/master-list.tsv</code> to a DOM fixture, acceptance criteria, and test procedure.</p>
+  <h1>SnowBoots WCAG Litmus Test <small>v0.2.1 — 34 CSS + Phase A shell patterns</small></h1>
+  <p>Maps remediated and pattern-backed issues from <code>research/master-list.tsv</code> to DOM fixtures, acceptance criteria, and test procedures.</p>
   <ol>
     <li>Load this page with Bootstrap 3.3.6 + <code>snowboots-core-overrides.scss</code> + <code>snowboots-a11y.scss</code> (via Theme CSS Includes in ServiceNow, or relative links for local dev).</li>
     <li>Work through each <code>#issue-NN</code> section below.</li>
     <li>Run <strong>axe DevTools</strong> / <strong>WAVE</strong> on contrast sections; use browser <strong>Contrast Checker</strong> on flagged elements.</li>
     <li>Keyboard-only tab through focus sections; emulate <strong>prefers-reduced-motion</strong> in DevTools → Rendering for motion sections.</li>
     <li>Set browser font size to 200% for issue #117.</li>
+    <li><strong>Phase A:</strong> Tab once for skip link; open modal for focus trap; toggle mobile nav for <code>aria-expanded</code>.</li>
   </ol>
-  <p><strong>Checklist (34):</strong></p>
+  <p><strong>Checklist CSS (34):</strong></p>
   <div class="checklist">
     <label><input type="checkbox"> #1 Primary btn contrast</label>
     <label><input type="checkbox"> #2 Secondary hover</label>
@@ -88,6 +125,15 @@
     <label><input type="checkbox"> #120 Motion nausea</label>
     <label><input type="checkbox"> #146 Widget placeholder</label>
     <label><input type="checkbox"> #156 Widget consistency</label>
+  </div>
+  <p style="margin-top:12px;"><strong>Checklist Phase A shell (patterns):</strong></p>
+  <div class="checklist">
+    <label><input type="checkbox"> #28 Skip link</label>
+    <label><input type="checkbox"> #46 Landmarks</label>
+    <label><input type="checkbox"> #25 Modal focus on open</label>
+    <label><input type="checkbox"> #26 Modal trap / Esc</label>
+    <label><input type="checkbox"> #48 Modal ARIA</label>
+    <label><input type="checkbox"> #36 Navbar aria-expanded</label>
   </div>
 </div>
 
@@ -560,11 +606,99 @@
   </div>
 </div>
 
+<!-- ============================================================ -->
+<!-- PHASE A SHELL — Issues 28, 46, 25, 26, 48, 36                 -->
+<!-- Patterns: examples/widgets/sb-header, sb-theme-js             -->
+<!-- ============================================================ -->
+<div class="category-block" id="cat-phase-a">
+  <h2>Phase A Shell <small>(widget / Theme JS patterns)</small></h2>
+  <p>These require markup or JS (see <code>examples/widgets/</code>). CSS only styles the skip link when present.</p>
+
+  <div class="test-section" id="issue-28">
+    <h3><span class="issue-id">#28</span> Skip to main content <span class="issue-badge pattern">widget + a11y.scss</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> A visible, focusable skip link appears on first Tab and jumps to main content.</div>
+    <div class="test-block"><strong>Test:</strong> Reload page, press Tab once; confirm “Skip to main content” appears; activate it; focus lands in <code>#main-content</code>.</div>
+    <div class="fixture">
+      <div class="fixture-label">Fixture</div>
+      <p>Skip link is the first focusable control at the top of this page (class <code>.sb-skip-link</code>). Pattern: <code>examples/widgets/sb-header/template.html</code>.</p>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-46">
+    <h3><span class="issue-id">#46</span> ARIA landmarks <span class="issue-badge pattern">widget HTML</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Page exposes banner, navigation, and main landmarks (unique main).</div>
+    <div class="test-block"><strong>Test:</strong> Run axe landmarks rules or screen reader landmark list; confirm <code>role=&quot;banner&quot;</code> header, <code>nav</code> Primary, and <code>main#main-content</code>.</div>
+    <div class="fixture">
+      <div class="fixture-label">Fixture</div>
+      <p>This page structure: header <code>role=&quot;banner&quot;</code>, <code>&lt;nav aria-label=&quot;Primary&quot;&gt;</code>, <code>&lt;main id=&quot;main-content&quot;&gt;</code>.</p>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-25-26-48">
+    <h3><span class="issue-id">#25 #26 #48</span> Modal focus, trap, ARIA <span class="issue-badge pattern">Theme JS</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Focus moves into dialog on open; Tab is trapped; Esc closes and restores focus; dialog has <code>role=&quot;dialog&quot;</code> and <code>aria-modal=&quot;true&quot;</code>.</div>
+    <div class="test-block"><strong>Test:</strong> Tab to “Open lab modal”, Enter; Tab cycles inside; Esc returns focus to the button. Inspect dialog attributes.</div>
+    <div class="fixture">
+      <div class="fixture-label">Fixture</div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sb-lab-modal">Open lab modal</button>
+      <div class="modal fade" id="sb-lab-modal" tabindex="-1" role="dialog" aria-labelledby="sb-lab-modal-title">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="sb-lab-modal-title">Lab modal dialog</h4>
+            </div>
+            <div class="modal-body">
+              <p>Tab should stay inside this dialog while it is open.</p>
+              <label for="sb-modal-input">Sample field</label>
+              <input type="text" class="form-control" id="sb-modal-input" placeholder="Focusable field">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Primary action</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section" id="issue-36">
+    <h3><span class="issue-id">#36</span> Navbar toggle aria-expanded <span class="issue-badge pattern">widget + client.js</span></h3>
+    <div class="ac-block"><strong>Acceptance:</strong> Mobile nav toggle exposes correct <code>aria-expanded</code> and controls the nav region.</div>
+    <div class="test-block"><strong>Test:</strong> Narrow the viewport, Tab to the navbar toggle, activate; confirm <code>aria-expanded</code> flips true/false and menu items become reachable.</div>
+    <div class="fixture">
+      <div class="fixture-label">Fixture</div>
+      <p>Use the header toggle at the top of this page (<code>#litmus-nav-toggle</code>). On PDI use <code>examples/widgets/sb-header/client.js</code>.</p>
+    </div>
+  </div>
+</div>
+
+</main>
+
 <hr>
-<p><strong>After completing all 34 checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.<br>
-SnowBoots a11y v0.2.0 — see <code>snowboots-a11y.scss</code> and <code>research/master-list.tsv</code>.</p>
+<p><strong>After completing CSS + Phase A checks:</strong> run full-page axe DevTools + WAVE + keyboard-only navigation pass.<br>
+SnowBoots a11y v0.2.1 — see <code>snowboots-a11y.scss</code>, <code>examples/widgets/</code>, and <code>research/master-list.tsv</code>.</p>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="widgets/sb-theme-js/modal-a11y.js"></script>
+<script>
+(function () {
+  var toggle = document.getElementById('litmus-nav-toggle');
+  var nav = document.getElementById('litmus-primary-nav');
+  if (!toggle || !nav || !window.jQuery) return;
+  function sync() {
+    var expanded = nav.classList.contains('in') || nav.classList.contains('show');
+    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  }
+  window.jQuery(nav).on('shown.bs.collapse hidden.bs.collapse', sync);
+  toggle.addEventListener('click', function () {
+    setTimeout(sync, 0);
+    setTimeout(sync, 350);
+  });
+})();
+</script>
 </body>
 </html>
+
