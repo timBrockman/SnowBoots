@@ -1,8 +1,8 @@
 /* ================================================
    SnowBoots - a11y Overrides
    Dedicated accessibility layer for ServiceNow Bootstrap 3.3.6
-   Version: 0.2.0 (June 2026)
-   Purpose: WCAG AAA-targeted enhancements (contrast, focus, motion)
+   Version: 0.2.1 (August 2026)
+   Purpose: WCAG AAA-targeted enhancements (contrast, focus, motion, skip-link)
    ================================================ */
 
 /* ================================================
@@ -219,6 +219,59 @@ html body .widget .btn:focus-visible {
   outline: 4px solid var(--sb-a11y-focus-ring);
   outline-offset: 3px;
   box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.35);
+}
+
+/* ================================================
+   5b. Skip link (markup required in header widget)
+      Issue: 28
+   ================================================ */
+/* Visually hidden until focused; pair with
+   <a class="sb-skip-link" href="#main-content"> in header HTML.
+   Target: <main id="main-content" tabindex="-1"> (or role="main"). */
+html body .sb-skip-link,
+html body a.sr-only-focusable.sb-skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  z-index: 100000;
+  padding: 0.75rem 1rem;
+  background: var(--sb-a11y-primary);
+  color: var(--sb-a11y-primary-text) !important;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 2px;
+  /* Hide off-screen until keyboard focus */
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+}
+
+html body .sb-skip-link:focus,
+html body .sb-skip-link:focus-visible,
+html body a.sr-only-focusable.sb-skip-link:focus,
+html body a.sr-only-focusable.sb-skip-link:focus-visible {
+  clip: auto;
+  clip-path: none;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  white-space: normal;
+  outline: 4px solid var(--sb-a11y-focus-ring);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.35);
+}
+
+/* When skip link moves focus to main, show a clear target ring */
+html body #main-content:focus,
+html body #main-content:focus-visible {
+  outline: 4px solid var(--sb-a11y-focus-ring);
+  outline-offset: 3px;
 }
 
 /* ================================================
