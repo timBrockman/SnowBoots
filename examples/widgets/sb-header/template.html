@@ -1,0 +1,43 @@
+<!--
+  SnowBoots SB Header — paste into Widget → HTML Template
+  Issues: #28 skip link, #46 landmarks, #36 navbar aria-expanded (see client.js)
+  Requires page content: id="main-content" role="main" tabindex="-1"
+-->
+<header class="sb-header navbar navbar-default" role="banner">
+  <a class="sb-skip-link sr-only-focusable" href="#main-content">
+    Skip to main content
+  </a>
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#sb-primary-nav"
+        aria-controls="sb-primary-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        id="sb-nav-toggle"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="?id=index">{{::data.portal_title || 'SnowBoots Lab'}}</a>
+    </div>
+
+    <nav
+      id="sb-primary-nav"
+      class="collapse navbar-collapse"
+      aria-label="Primary"
+    >
+      <ul class="nav navbar-nav">
+        <li><a href="?id=index">Home</a></li>
+        <li><a href="?id=sb-litmus">Litmus</a></li>
+        <!-- Replace with portal menu items / sp-navbar as needed -->
+      </ul>
+    </nav>
+  </div>
+</header>
